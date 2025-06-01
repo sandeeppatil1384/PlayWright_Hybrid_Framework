@@ -1,0 +1,24 @@
+{
+  "name": "playwright_hybrid_framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sandeeppatil1384/PlayWright_Hybrid_Framework.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/sandeeppatil1384/PlayWright_Hybrid_Framework/issues"
+  },
+  "homepage": "https://github.com/sandeeppatil1384/PlayWright_Hybrid_Framework#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^22.15.29",
+    "allure-playwright": "^3.2.2"
+  }
+}
