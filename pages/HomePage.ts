@@ -1,23 +1,23 @@
 import { Page } from "@playwright/test";
 import { BasePage } from "./BasePage";
+import allLocators from '../locators/locators.json'
 
 export class HomePage extends BasePage{
+
+    private locators = allLocators.HomePage;
 
     constructor(page: Page){
         super(page);
     }
 
-    //private newCarsMenu = () => this.page.locator('//div[normalize-space()="NEW CARS"]');
-    //private findNewCarsMenu = () => this.page.locator('text = Find New Cars');
-
-    async navigateToHomePage(){
+     async navigateToHomePage(){
         await this.navigateTo('/');
     }
 
     async findNewCar(){
 
-        await this.hover('//div[normalize-space()="NEW CARS"]');
-        await this.click('text = Find New Cars');
+        await this.hover(this.locators.newCars);
+        await this.click(this.locators.findNewCars);
         await this.waitForTimeout(2000);
 
 
