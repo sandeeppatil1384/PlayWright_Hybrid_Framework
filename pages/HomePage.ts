@@ -1,25 +1,24 @@
 import { Page } from "@playwright/test";
+import { BasePage } from "./BasePage";
 
-export class HomePage{
-
-    private page: Page;
+export class HomePage extends BasePage{
 
     constructor(page: Page){
-        this.page = page;
+        super(page);
     }
 
-    private newCarsMenu = () => this.page.locator('//div[normalize-space()="NEW CARS"]');
-    private findNewCarsMenu = () => this.page.locator('text = Find New Cars');
+    //private newCarsMenu = () => this.page.locator('//div[normalize-space()="NEW CARS"]');
+    //private findNewCarsMenu = () => this.page.locator('text = Find New Cars');
 
     async navigateToHomePage(){
-        await this.page.goto('/');
+        await this.navigateTo('/');
     }
 
     async findNewCar(){
 
-        await this.newCarsMenu().hover();
-        await this.findNewCarsMenu().click();
-        await this.page.waitForTimeout(2000);
+        await this.hover('//div[normalize-space()="NEW CARS"]');
+        await this.click('text = Find New Cars');
+        await this.waitForTimeout(2000);
 
 
     }
