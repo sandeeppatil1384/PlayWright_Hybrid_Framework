@@ -1,26 +1,20 @@
-import {test, expect} from '@playwright/test';
-import { HomePage } from '../pages/HomePage';
-import { NewCarsPage } from '../pages/NewCarsPage';
+import {test, expect} from '../utils/test-base';
 
 
 test.describe('Find New Car', ()=>{
 
-    let homePage: HomePage;
-    let newCarsPage: NewCarsPage;
-
-    test.beforeEach(async ({page}) => {
-        homePage = new HomePage(page);
-        newCarsPage = new NewCarsPage(page);
-        await homePage.navigateToHomePage();
+    test.beforeEach(async ({pages}) => {
+      
+        await pages.homePage.navigateToHomePage();
     });
 
-    test('Find New Car', async ({page}) => {
-        await homePage.findNewCar();
-        await expect(page).toHaveURL(/.*new-cars/);
-        await console.log(await newCarsPage.getHeaderText());
-        expect(await newCarsPage.getHeaderText()).toContain('New Cars');
-        await newCarsPage.gotoBMWCar();
-        await expect(page).toHaveURL(/.*bmw-cars/);
+    test('Find New Car', async ({pages}) => {
+        await pages.homePage.findNewCar();
+        await expect(pages.page).toHaveURL(/.*new-cars/);
+        await console.log(await pages.newCarsPage.getHeaderText());
+        expect(await pages.newCarsPage.getHeaderText()).toContain('New Cars');
+        await pages.newCarsPage.gotoBMWCar();
+        await expect(pages.page).toHaveURL(/.*bmw-cars/);
     })
 
 });
